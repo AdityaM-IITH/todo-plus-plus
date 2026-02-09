@@ -1,64 +1,54 @@
 # Todo++
 
-A simple React todo application that prioritized **proper state management**, **performance-aware user interface**, and **sturdy handling of edge cases** over aesthetic appeal.
+Todo++ is a React-based todo application built with a focus on **correct state management**, **performance-aware UI behavior**, and **robust handling of edge cases**, rather than visual polish.
 
+The purpose of this project is to demonstrate frontend engineering principles that matter in real-world applications, such as predictable data flow, safe state updates, and explicit handling of async UI states.
 
-The purpose of this project was to illustrate the engineering principles required for frontend work in the real world.
+---
 
---- ## Characteristics
+## Features
 
-- Stable unique IDs in an object-based task model
+- Object-based task model with stable unique IDs  
+- Add, toggle (complete / incomplete), and delete tasks  
+- Persistent state using `localStorage`  
+- Lazy initialization to prevent inconsistent initial state  
+- Handwritten debounced search (no external libraries)  
+- Async simulation with explicit loading and error UI states  
+- Clear separation between source of truth and derived data  
 
-Tasks can be added, toggled as complete or incomplete, and deleted.
+---
 
-- Using `localStorage` for persistent state
+## Important Engineering Decisions
 
-To prevent inconsistent beginning states, use lazy initialization.
+- **Identity stability over index-based logic**  
+  Tasks use UUIDs instead of array indexes to avoid bugs during deletion or reordering.
 
-Debounced search (built by hand, without the use of external libraries)
+- **Functional state updates (`prev`)**  
+  Ensures correctness under batched and asynchronous React state updates.
 
-- Async simulation with explicit loading and error UI states
+- **Derived data, not duplicated state**  
+  Filtered task lists are computed during render instead of being stored in state.
 
-Clear distinction between the derived data and the source of truth
+- **Debouncing at the input boundary**  
+  Prevents unnecessary recomputation during rapid user input.
 
---- ## Important Engineering Choices
+- **Explicit async lifecycle modeling**  
+  UI clearly represents loading, success, and failure states.
 
- 
+---
+
 ## Tech Stack
 
-- React
-
-- JavaScript (ES6+)
-
-- Vite
+- React  
+- JavaScript (ES6+)  
+- Vite  
 
 ---
-**Identity stability over index-based logic**
-
-UUIDs are used by tasks to avoid issues when they are being deleted or rearranged.
-
-- **Functional state updates (`prev`)**
-
-Ensures correctness under batched and asynchronous updates.
-
-- **Derived data, not duplicated state**
-
-Filtered tasks are computed during render instead of stored.
-
-- **Debouncing at the input boundary**
-
-Prevents unnecessary re-computation during rapid user input.
-
-- **Explicit async lifecycle modeling**
-
-UI clearly represents loading, success, and failure states.
-
----
+## Live Demo
+https://todo-plus-plus-react.netlify.app/
 
 ## Running Locally
 
 ```bash
-
 npm install
-
 npm run dev
