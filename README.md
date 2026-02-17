@@ -45,7 +45,7 @@ The purpose of this project is to demonstrate frontend engineering principles th
 
 ---
 ## Live Demo
-https://todo-plus-plus-react.netlify.app/
+https://todo-plus-plus-rust.vercel.app/
 
 ## Running Locally
 
