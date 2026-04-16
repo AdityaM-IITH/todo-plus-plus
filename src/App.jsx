@@ -35,44 +35,18 @@ function App() {
   useEffect(() => {
     localStorage.setItem("todo-plus-plus", JSON.stringify(tasks));
   }, [tasks]);
-  //debounce starts
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setDebouncedQuery(searchQuery);
-  //   }, 300);
-
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [searchQuery]);
   useEffect(() => {
-    console.log('🔵 searchQuery changed to:', searchQuery);
-    console.log('🟡 Setting new 300ms timer...');
-
     const timer = setTimeout(() => {
-      console.log('✅ Timer completed! Updating debouncedQuery to:', searchQuery);
       setDebouncedQuery(searchQuery);
     }, 300);
 
-    return () => {
-      console.log('🔴 CLEANUP: Clearing previous timer before setting new one');
-      clearTimeout(timer);
-    };
+    return () => clearTimeout(timer);
   }, [searchQuery]);
-  //debounce ends
   useEffect(() => {
     setLoading(true);
     setError(null);
 
     const timer = setTimeout(() => {
-      const shouldFail = false;
-
-      if (shouldFail) {
-        setError("Failed to load tasks");
-        setLoading(false);
-        return;
-      }
-
       setLoading(false);
     }, 800);
 
